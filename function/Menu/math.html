@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.5);
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 40%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div id="menuModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Pilih Kalkulator</h2>
+        <button onclick="kalkulatorSegitiga()">Luas Segitiga</button>
+        <button onclick="kalkulatorLingkaran()">Keliling Lingkaran</button>
+        <button onclick="kalkulatorPrima()">Bilangan Prima</button>
+    </div>
+</div>
+
+<button onclick="openModal()">Buka Menu</button>
+
+<script>
+    function openModal() {
+        document.getElementById("menuModal").style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById("menuModal").style.display = "none";
+    }
+
+    function kalkulatorSegitiga() {
+        let alas = Number(prompt("Masukkan alas segitiga: "));
+        let tinggi = Number(prompt("Masukkan tinggi segitiga: "));
+    
+        let segitiga = (alas, tinggi) => (alas * tinggi) / 2;
+    
+        alert(
+            "Nilai yang dimasukkan:\n" +
+            "alas = " + alas + "\n" +
+            "tinggi = " + tinggi + "\n\n" +
+            "Hasil Kalkulator : " + segitiga(alas, tinggi)
+        );
+    }
+
+    function kalkulatorLingkaran() {
+        let r = Number(prompt("Masukkan jari-jari (r): "));
+    
+        let lingkaran = (r) => 2 * Math.PI * r;
+    
+        alert(
+            "Nilai yang dimasukkan:\n" +
+            "r = " + r + "\n\n" +
+            "Hasil Kalkulator : " + lingkaran(r)
+        );
+    }
+
+    function kalkulatorPrima() {
+        let n = Number(prompt("Masukkan n: "));
+    
+        let prima = (n) => (2 ** n) - 1;
+    
+        alert(
+            "Nilai yang dimasukkan:\n" +
+            "n = " + n + "\n\n" +
+            "Hasil Kalkulator : " + prima(n)
+        );
+    }
+
+    // Tutup modal jika pengguna mengklik di luar modal
+    window.onclick = function(event) {
+        const modal = document.getElementById("menuModal");
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
